@@ -16,7 +16,8 @@ class DataScreen extends Component {
           </View>
   
       );
-    }
+      this.circularProgress.animate(100, 8000, Easing.quad);
+      }
   }
 
   const styles = StyleSheet.create({

@@ -10,9 +10,10 @@
     "@babel/runtime": "^7.3.1",
     "react": "^16.8.1",
     "react-native": "0.58.4",
+    "react-native-circular-progress": "^1.1.0",
     "react-native-elements": "^1.0.0",
     "react-native-gesture-handler": "^1.0.15",
-    "react-native-svg": "^9.2.3",
+    "react-native-svg": "^9.2.4",
     "react-native-vector-icons": "^6.2.0",
     "react-navigation": "^3.1.5",
     "redux": "^4.0.1"
