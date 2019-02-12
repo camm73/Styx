@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, ScrollView, Easing, Dimensions, Alert} from 'react-native'; // 6.2.2
+import {Text, View, StyleSheet, ScrollView, Easing, Dimensions, Alert, Button} from 'react-native'; // 6.2.2
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
-import { AnimatedCircularProgress, CircularProgress } from 'react-native-circular-progress';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 
 const MAX_POINTS = 100;
@@ -9,9 +9,16 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const animDuration = 2500;
 const animEase = Easing.inOut(Easing.ease);
-const circProgress = React.createRef();
+
 
 class HomeScreen extends Component {
+
+  constructor(props){
+    super(props)
+    updateAnimState = updateAnimState.bind(this);
+  }
+
+
   state = {
     isMoving: false,
     pointsDelta: 0,
@@ -20,21 +27,21 @@ class HomeScreen extends Component {
 
     render() {
       const fill = this.state.points / MAX_POINTS * 100;
-
       return (
-        <ScrollView contentContainerStyle={styles.home}>
+        <ScrollView contentContainerStyle={styles.home} ref={(ref) => this.scroll = ref}>
            <AnimatedCircularProgress
               size={250}
               width={12}
               fill = {fill}
               duration = {animDuration}
+              lineCap = 'round'
+              arcSweepAngle = {270}
+              rotation = {224}
               easing = {Easing.inOut(Easing.ease)}
               tintColor="#00e0ff"
               backgroundColor="#3d5875"
-              ref= {circProgress}
+              ref={(ref) => this.circularProgress = ref}
               >
-              
-
               {(fill) => (
                 <Text style={styles.points}>
                   { Math.round(MAX_POINTS * fill / 100) + '% \n Budget'}
@@ -42,6 +49,8 @@ class HomeScreen extends Component {
               )}
               
           </AnimatedCircularProgress>
+
+          
         </ScrollView>
       );
     }
@@ -52,9 +61,8 @@ class HomeScreen extends Component {
     return (80);
   }
 
-  export function resartAnimation(){
-    //circProgress.reAnimate(0, 80, animDuration, animEase);
-    //TODO: Fix the TypeError occurring on circProgress
+  export function updateAnimState(){
+    this.circularProgress.reAnimate(0, 40, animDuration, animEase);
   }
 
   const styles = StyleSheet.create({

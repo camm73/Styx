@@ -1,9 +1,9 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { StyleSheet,Alert} from 'react-native'; // 6.2.2
+import { StyleSheet,Alert} from 'react-native'; //6.2.2
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
-import {AppContainer} from './navigators/MainNavigator'
-import {resartAnimation} from './pages/StyxPage';
+import {AppContainer} from './navigators/MainNavigator';
+import {HomeScreen, updateAnimState} from './pages/StyxPage';
 
 
 export default class App extends React.Component {
@@ -15,9 +15,9 @@ export default class App extends React.Component {
         const currentScreen = getActiveRouteName(currentState);
         const prevScreen = getActiveRouteName(prevState);
 
+        //Trigger re-animation of circular progress bar when going back to home screen.
         if ((prevScreen !== currentScreen) && (currentScreen == 'HomeScreen')) {
-          //call renanimate function from styxpage class
-          resartAnimation();
+          updateAnimState();
           }
         }}/>
       </React.Fragment>
