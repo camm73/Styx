@@ -1,7 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Text, View, StyleSheet, ScrollView, Easing, Dimensions, Alert, Button} from 'react-native'; // 6.2.2
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import StarComponent from "../components/StarComponent";
+import BLEComponent from "../components/BLEComponent";
+import BlueComp from "../components/BlueComp";
 
 
 const MAX_POINTS = 100;
@@ -43,14 +46,19 @@ class HomeScreen extends Component {
               ref={(ref) => this.circularProgress = ref}
               >
               {(fill) => (
-                <Text style={styles.points}>
-                  { Math.round(MAX_POINTS * fill / 100) + '% \n Budget'}
+                <Fragment>
+                  <Text style={styles.percent}>
+                  { Math.round(MAX_POINTS * fill / 100) + '%'}
                 </Text>
+
+                <Text style={styles.percentText}>Budget</Text>
+                </Fragment>
               )}
-              
           </AnimatedCircularProgress>
 
-          
+          <StarComponent />
+          <BLEComponent />
+
         </ScrollView>
       );
     }
@@ -77,7 +85,7 @@ class HomeScreen extends Component {
       fontSize: 24
     },
 
-    points: {
+    percent: {
       backgroundColor: 'transparent',
       textAlign: 'center',
       justifyContent: 'center',
@@ -85,6 +93,15 @@ class HomeScreen extends Component {
       fontSize: 50,
       fontWeight: "100",
     },
+
+    percentText: {
+      backgroundColor: 'transparent',
+      textAlign: 'center',
+      justifyContent: 'center',
+      color: '#7591af',
+      fontSize: 36,
+      fontWeight: "100",
+    }
   
   });
 

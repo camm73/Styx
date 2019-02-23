@@ -1,12 +1,38 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { StyleSheet,Alert} from 'react-native'; //6.2.2
+import { StyleSheet, Alert, AppState, Text} from 'react-native'; //6.2.2
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
 import {AppContainer} from './navigators/MainNavigator';
 import {HomeScreen, updateAnimState} from './pages/StyxPage';
+import { Button } from 'react-native-elements';
 
 
 export default class App extends React.Component {
+  state = {
+    appState: AppState.currentState,
+  };
+
+  componentWillMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
+  }
+
+  _handleAppStateChange = (nextAppState) => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      //TODO: make lessy jumpy animation when opening the app
+      
+      updateAnimState();
+    }
+    this.setState({appState: nextAppState});
+  };
+
+
   render() {
     return (
       <React.Fragment>
