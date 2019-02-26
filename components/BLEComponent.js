@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Platform, View, Text, Alert} from 'react-native';
 import {BleManager, Device} from 'react-native-ble-plx';
 import { Button } from 'react-native-elements';
+import base64 from 'react-native-base64';
 
 class BLEComponent extends Component{
 
@@ -93,7 +94,7 @@ class BLEComponent extends Component{
       }
 
       readLight(){
-        console.log(this.device.readCharacteristicForService('1ed1', '1ed2'));
+        this.device.readCharacteristicForService('1ed1', '1ed2').then(characteristic => console.log(base64.decode(characteristic.value)));
       }
 
       render() {

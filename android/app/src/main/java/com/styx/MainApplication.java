@@ -3,6 +3,8 @@ package com.styx;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import org.wonday.orientation.OrientationPackage;
 import it.innove.BleManagerPackage;
 import com.polidea.reactnativeble.BlePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -28,6 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
+            new OrientationPackage(),
             new BleManagerPackage(),
             new BlePackage(),
             new VectorIconsPackage(),

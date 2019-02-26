@@ -134,6 +134,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-splash-screen')
+    implementation project(':react-native-orientation-locker')
     implementation project(':react-native-ble-manager')
     implementation project(':react-native-ble-plx')
     implementation project(':react-native-vector-icons')

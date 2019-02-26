@@ -4,7 +4,6 @@ import { createStackNavigator, createBottomTabNavigator, createAppContainer, Tab
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import StarComponent from "../components/StarComponent";
 import BLEComponent from "../components/BLEComponent";
-import BlueComp from "../components/BlueComp";
 
 
 const MAX_POINTS = 100;

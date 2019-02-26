@@ -40,7 +40,7 @@ export default class App extends React.Component {
       <AppContainer  onNavigationStateChange={(prevState, currentState) => {
         const currentScreen = getActiveRouteName(currentState);
         const prevScreen = getActiveRouteName(prevState);
-
+        
         //Trigger re-animation of circular progress bar when going back to home screen.
         if ((prevScreen !== currentScreen) && (currentScreen == 'HomeScreen')) {
           updateAnimState();
