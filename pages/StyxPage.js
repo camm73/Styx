@@ -54,8 +54,7 @@ class HomeScreen extends Component {
                 </Fragment>
               )}
           </AnimatedCircularProgress>
-
-          <StarComponent />
+          
           <BLEComponent />
 
         </ScrollView>

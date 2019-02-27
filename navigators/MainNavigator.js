@@ -5,14 +5,15 @@ import { createStackNavigator, createBottomTabNavigator, createAppContainer, Tab
 import DataScreen from '../pages/DataPage';
 import HomeScreen from '../pages/StyxPage';
 import SettingsScreen from '../pages/SettingsPage';
+import HeaderComponent from '../components/HeaderComponent';
 
 
-export const Tabs = createBottomTabNavigator(
+/*const Tabs = createBottomTabNavigator(
     {
       DataScreen: {
         screen: DataScreen,
         navigationOptions: {
-          tabBarIcon: () => (<Image source={require('../res/dataIcon.png')} style={{height: 25, width: 25}}/>),
+          tabBarIcon: () => (<Image source={require('../res/dataIcon.png')} style={{height: 40, width: 40}}/>),
           tabBarLabel: 'Data',
         },
         
@@ -21,7 +22,7 @@ export const Tabs = createBottomTabNavigator(
       HomeScreen: { 
         screen: HomeScreen,
         navigationOptions: {
-          tabBarIcon: () => (<Image source={require('../res/styxIcon.png')} style={{height: 28, width: 28}} />),
+          tabBarIcon: () => (<Image source={require('../res/homeIcon.png')} style={{height: 28, width: 28}} />),
           tabBarLabel: 'Home'
         },
       },
@@ -62,7 +63,90 @@ export const Tabs = createBottomTabNavigator(
       swipeEnabled: false,
     },
   
-  );
+);*/
+
+const MainStack = createStackNavigator({
+  /*ProfileScreen: {
+    //TODO: create this screen
+  },*/
+
+  SettingsScreen: { 
+    screen: SettingsScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Settings',
+    }),
+  },
+
+  TabPage: {
+    screen: createBottomTabNavigator(
+      {
+        DataScreen: {
+          screen: DataScreen,
+          navigationOptions: {
+            tabBarIcon: () => (<Image source={require('../res/dataIcon.png')} style={{height: 40, width: 40}}/>),
+            tabBarLabel: 'Data',
+          },
+          
+        },
+    
+        HomeScreen: { 
+          screen: HomeScreen,
+          navigationOptions: {
+            tabBarIcon: () => (<Image source={require('../res/homeIcon.png')} style={{height: 28, width: 28}} />),
+            tabBarLabel: 'Home'
+          },
+        },
+    
+        SettingsScreen: { 
+          screen: SettingsScreen,
+          navigationOptions: {
+            tabBarIcon: () => (<Image source={require('../res/settingsIcon.png')} style={{height: 25, width: 25}} />),
+            tabBarLabel: 'Settings',
+          },
+        },
+      },
+    
+      {
+        initialRouteName: 'HomeScreen',
+        tabBarComponent: TabBarBottom,
+        tabBarPosition: 'bottom',
+        tabBarOptions: {
+          activeTintColor: 'blue',
+          inactiveTintColor: 'gray',
+          activeBackgroundColor: 'gray',
+          inactiveBackgroundColor: 'lightgray',
+          safeAreaInset: {
+            bottom: 'never'
+          },
+          tabStyle: {
+            padding: 20
+          },
+          labelStyle: {
+            padding: 15,
+            height: 0
+          },
+          style: {
+            height: 70
+          }
+        },
+        animationEnabled: false,
+        swipeEnabled: false,
+      },
+    
+    ),
+
+    navigationOptions: {
+      header: props => <HeaderComponent {...props}/>,
+      //TODO: Fix problem with navigation props not passing correctly
+    }
+
+  },
+
+},
+{
+  initialRouteName: 'TabPage',
+
+});
   
   
-export const AppContainer = createAppContainer(Tabs);
+export const AppContainer = createAppContainer(MainStack);

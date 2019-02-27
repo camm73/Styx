@@ -1,11 +1,13 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { StyleSheet, Alert, AppState, Text} from 'react-native'; //6.2.2
+import { StyleSheet, Alert, AppState, Text, View, Image, TouchableOpacity} from 'react-native'; //6.2.2
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
 import {AppContainer} from './navigators/MainNavigator';
 import {HomeScreen, updateAnimState} from './pages/StyxPage';
-import { Button } from 'react-native-elements';
+import HeaderComponent from "./components/HeaderComponent";
+import { Button, Header } from 'react-native-elements';
 import SplashScreen from 'react-native-splash-screen';
+//import { View } from 'react-native-animatable';
 
 
 export default class App extends React.Component {
@@ -74,10 +76,32 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
 
+  topBar: {
+    flex: 0.07,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    borderBottomWidth: 2,
+    borderBottomColor: '#CEE3EC'
+  },
+
   footer: {
     flex:1,
     flexDirection: 'row',
     backgroundColor: 'lightgray'
+  },
+
+  logo: {
+    width: 110,
+    height: 110,
+    resizeMode: 'contain'
+  },
+
+  topButton: {
+    width: 32,
+    height: 32,
+    resizeMode: 'contain'
   }
 
 });
