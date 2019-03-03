@@ -5,6 +5,7 @@ import { createStackNavigator, createBottomTabNavigator, createAppContainer, Tab
 import DataScreen from '../pages/DataPage';
 import HomeScreen from '../pages/StyxPage';
 import SettingsScreen from '../pages/SettingsPage';
+import { Header } from 'react-native-elements';
 import HeaderComponent from '../components/HeaderComponent';
 
 
@@ -136,8 +137,11 @@ const MainStack = createStackNavigator({
     ),
 
     navigationOptions: {
-      header: props => <HeaderComponent {...props}/>,
-      //TODO: Fix problem with navigation props not passing correctly
+      header: () => {
+        return(
+          <HeaderComponent />
+        );
+      }
     }
 
   },
