@@ -5,80 +5,30 @@ import { createStackNavigator, createBottomTabNavigator, createAppContainer, Tab
 import DataScreen from '../pages/DataPage';
 import HomeScreen from '../pages/StyxPage';
 import SettingsScreen from '../pages/SettingsPage';
+import ProfileScreen from '../pages/ProfilePage';
+import CommunityScreen from '../pages/CommunityPage';
 import { Header } from 'react-native-elements';
-import HeaderComponent from '../components/HeaderComponent';
+import MainHeaderComponent from '../components/MainHeaderComponent';
 
-
-/*const Tabs = createBottomTabNavigator(
-    {
-      DataScreen: {
-        screen: DataScreen,
-        navigationOptions: {
-          tabBarIcon: () => (<Image source={require('../res/dataIcon.png')} style={{height: 40, width: 40}}/>),
-          tabBarLabel: 'Data',
-        },
-        
-      },
-  
-      HomeScreen: { 
-        screen: HomeScreen,
-        navigationOptions: {
-          tabBarIcon: () => (<Image source={require('../res/homeIcon.png')} style={{height: 28, width: 28}} />),
-          tabBarLabel: 'Home'
-        },
-      },
-  
-      SettingsScreen: { 
-        screen: SettingsScreen,
-        navigationOptions: {
-          tabBarIcon: () => (<Image source={require('../res/settingsIcon.png')} style={{height: 25, width: 25}} />),
-          tabBarLabel: 'Settings',
-        },
-      },
-    },
-  
-    {
-      initialRouteName: 'HomeScreen',
-      tabBarComponent: TabBarBottom,
-      tabBarPosition: 'bottom',
-      tabBarOptions: {
-        activeTintColor: 'blue',
-        inactiveTintColor: 'gray',
-        activeBackgroundColor: 'gray',
-        inactiveBackgroundColor: 'lightgray',
-        safeAreaInset: {
-          bottom: 'never'
-        },
-        tabStyle: {
-          padding: 20
-        },
-        labelStyle: {
-          padding: 15,
-          height: 0
-        },
-        style: {
-          height: 70
-        }
-      },
-      animationEnabled: false,
-      swipeEnabled: false,
-    },
-  
-);*/
-
-const MainStack = createStackNavigator({
-  /*ProfileScreen: {
-    //TODO: create this screen
-  },*/
-
-  SettingsScreen: { 
-    screen: SettingsScreen,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Settings',
-    }),
+const MainStack = createStackNavigator(
+  {
+  ProfileScreen: {
+    screen: ProfileScreen,
   },
 
+  SettingsScreen: {
+    screen: SettingsScreen,
+  },
+  
   TabPage: {
+    navigationOptions: {
+      header: () => {
+        return(
+          <MainHeaderComponent />
+        );
+      },
+      headerMode: 'screen',
+    },
     screen: createBottomTabNavigator(
       {
         DataScreen: {
@@ -98,11 +48,11 @@ const MainStack = createStackNavigator({
           },
         },
     
-        SettingsScreen: { 
-          screen: SettingsScreen,
+        CommunityScreen: { 
+          screen: CommunityScreen,
           navigationOptions: {
-            tabBarIcon: () => (<Image source={require('../res/settingsIcon.png')} style={{height: 25, width: 25}} />),
-            tabBarLabel: 'Settings',
+            tabBarIcon: () => (<Image source={require('../res/communityIcon.png')} style={{height: 35, width: 35}} />),
+            tabBarLabel: 'Community',
           },
         },
       },
@@ -117,7 +67,7 @@ const MainStack = createStackNavigator({
           activeBackgroundColor: 'gray',
           inactiveBackgroundColor: 'lightgray',
           safeAreaInset: {
-            bottom: 'never'
+            bottom: 'never',
           },
           tabStyle: {
             padding: 20
@@ -136,21 +86,16 @@ const MainStack = createStackNavigator({
     
     ),
 
-    navigationOptions: {
-      header: () => {
-        return(
-          <HeaderComponent />
-        );
-      }
-    }
-
   },
 
 },
+
 {
   initialRouteName: 'TabPage',
+  mode: 'modal'
+},
 
-});
+);
   
   
 export const AppContainer = createAppContainer(MainStack);

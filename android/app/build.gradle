@@ -134,6 +134,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-fs')
+    implementation project(':react-native-image-resizer')
+    implementation project(':react-native-image-picker')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-orientation-locker')
     implementation project(':react-native-ble-manager')

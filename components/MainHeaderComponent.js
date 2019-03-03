@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity, Component} from 'react-native'; //6.2.2
+import { StyleSheet, View, Image, TouchableOpacity} from 'react-native'; //6.2.2
 import { Header } from 'react-native-elements';
 import {withNavigation} from 'react-navigation';
 
-class HeaderComponent extends React.Component{
+class MainHeaderComponent extends React.Component{
 
   render () {
     return(
       <View style= {styles.topBar}>
         
-                <TouchableOpacity onPress = {() => this.props.navigation.navigate('DataScreen')}>
+                <TouchableOpacity onPress = {() => this.props.navigation.navigate('ProfileScreen')}>
                     <Image source={require('../res/profileIcon.png')} style = {styles.topButton}/>
                 </TouchableOpacity>
 
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   
   });
 
-export default withNavigation(HeaderComponent);
+export default withNavigation (MainHeaderComponent);

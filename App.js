@@ -4,10 +4,8 @@ import { StyleSheet, Alert, AppState, Text, View, Image, TouchableOpacity} from 
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
 import {AppContainer} from './navigators/MainNavigator';
 import {HomeScreen, updateAnimState} from './pages/StyxPage';
-import HeaderComponent from "./components/HeaderComponent";
 import { Button, Header } from 'react-native-elements';
 import SplashScreen from 'react-native-splash-screen';
-//import { View } from 'react-native-animatable';
 
 
 export default class App extends React.Component {

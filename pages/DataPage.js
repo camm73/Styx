@@ -4,6 +4,7 @@ import { Button, Text, View, StyleSheet, Image, CommonStyles} from 'react-native
 import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
 
 class DataScreen extends Component {
+  
     render() {
       return (
           <View style={styles.data}>

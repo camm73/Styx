@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {Text, View, StyleSheet, ScrollView, Easing, Dimensions, Alert, Button} from 'react-native'; // 6.2.2
-import { createStackNavigator, createBottomTabNavigator, createAppContainer, TabBarBottom, SafeAreaView } from 'react-navigation'; // 1.0.0-beta.27
+import { withNavigation } from 'react-navigation'; // 1.0.0-beta.27
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import StarComponent from "../components/StarComponent";
 import BLEComponent from "../components/BLEComponent";
@@ -55,7 +55,8 @@ class HomeScreen extends Component {
               )}
           </AnimatedCircularProgress>
           
-          <BLEComponent />
+         {/*Make sure to add back the BLE Component.
+            May actually want to move it to App.js for universality*/}
 
         </ScrollView>
       );
@@ -103,4 +104,4 @@ class HomeScreen extends Component {
   
   });
 
-  export default HomeScreen;
+  export default withNavigation(HomeScreen);
