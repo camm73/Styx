@@ -11,7 +11,9 @@ const screenHeight = Dimensions.get('window').height;
 class ProfileScreen extends React.Component {
     state = {
       isVisible: false,
-      edit: 'Name'
+      edit: 'Name',
+      avatarSource: {uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'}
+      //add getAvatar function to retreive photo from DB if one exists
     }
 
     static navigationOptions = {
@@ -23,7 +25,6 @@ class ProfileScreen extends React.Component {
     }
 
     getPlaceholderText(input){
-      console.log(input);
       if(input === "Name"){
         return "Full Name";
       }else if(input === "Age"){
@@ -35,6 +36,18 @@ class ProfileScreen extends React.Component {
       }
     }
 
+    getKeyboardType(input){
+      if(input === 'Name'){
+        return 'default';
+      }else if (input === "Age"){
+        return 'numeric';
+      }else if (input == "Height"){
+        //TODO want this to be a selector
+      }else if (input === "Weight"){
+        return 'numeric';
+      }
+    }
+
     render() {
         return(
         <View style={styles.container}>
@@ -42,7 +55,8 @@ class ProfileScreen extends React.Component {
           <PhotoUpload
               onPhotoSelect={avatar => {
                 if (avatar) {
-                  console.log('Image base64 string: ', avatar)
+                  console.log('Image base64 string: ', avatar);
+                  this.setState({avatarSource:avatar.uri});
                 }
               }}
             >
@@ -54,9 +68,7 @@ class ProfileScreen extends React.Component {
                   borderRadius: 75
                 }}
                 resizeMode='cover'
-                source={{
-                  uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
-                }}
+                source={this.state.avatarSource}
               />
             </PhotoUpload>
           </View>
@@ -74,6 +86,7 @@ class ProfileScreen extends React.Component {
               
               <Input
                 placeholder={this.getPlaceholderText(this.state.edit)}
+                keyboardType={this.getKeyboardType(this.state.edit)}
                 leftIconContainerStyle={styles.overlayIcon}
                 onChangeText={(text) => {
                   //TODO manage what to do with the text; set locally and input to database

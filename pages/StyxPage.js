@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import {Text, View, StyleSheet, ScrollView, Easing, Dimensions, Alert, Button} from 'react-native'; // 6.2.2
+import {Text, View, StyleSheet, ScrollView, Easing, Dimensions, Alert} from 'react-native'; // 6.2.2
 import { withNavigation } from 'react-navigation'; // 1.0.0-beta.27
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import StarComponent from "../components/StarComponent";
 import BLEComponent from "../components/BLEComponent";
+import {Button} from 'react-native-elements';
 
 
 const MAX_POINTS = 100;
@@ -54,6 +55,29 @@ class HomeScreen extends Component {
                 </Fragment>
               )}
           </AnimatedCircularProgress>
+
+          <View style={styles.statsBubble}>
+
+          </View>
+
+          {/*Spacer for two bubbles */}
+          <View style={{
+            height: 30
+          }}></View>
+
+          <View style={styles.textBubble}>
+                <View style = {styles.textBubbleTop}>
+                  <Text style={styles.textBubbleTopText}>Experiencing withdrawal symptoms?</Text>
+                </View>
+
+                <View style={styles.textBubbleButtonContainer}> 
+                  <Button title='Mild' 
+                  buttonStyle = {styles.mildButton}/>
+                  <Button title='Medium' buttonStyle={styles.mediumButton}/>
+                  <Button title='Strong' buttonStyle={styles.strongButton}/>
+                </View>
+
+          </View>
           
          {/*Make sure to add back the BLE Component.
             May actually want to move it to App.js for universality*/}
@@ -77,7 +101,8 @@ class HomeScreen extends Component {
       flex: 1, 
       justifyContent: 'center', 
       alignItems: 'center',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      flexDirection: 'column',
     },
   
     textLabel: {
@@ -100,6 +125,67 @@ class HomeScreen extends Component {
       color: '#7591af',
       fontSize: 36,
       fontWeight: "100",
+    },
+
+    textBubble: {
+      borderRadius: 25,
+      height: 100,
+      width: screenWidth - 40,
+      borderWidth: 2,
+      borderColor: '#CEE3EC',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
+
+    textBubbleTop:{
+      alignContent: 'center',
+      textAlign: 'center',
+      justifyContent: 'center',
+      paddingVertical: 5,
+    },
+
+    textBubbleTopText:{
+      alignContent: 'center',
+      textAlign: 'center',
+      justifyContent: 'center',
+      paddingVertical: 5,
+      fontSize: 20,
+      fontFamily: "Optima"
+    },
+    
+    textBubbleButtonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      alignContent: 'center',
+      paddingVertical: 5
+    },
+
+    mildButton: {
+      backgroundColor: 'lightblue',
+      borderRadius: 30,
+      width: 90
+    },
+
+    mediumButton: {
+      backgroundColor: 'blue',
+      borderRadius: 30,
+      width: 90
+    },
+
+    strongButton: {
+      backgroundColor: 'darkblue',
+      borderRadius: 30,
+      width: 90
+    },
+    
+    statsBubble: {
+      borderRadius: 25,
+      height: 100,
+      width: screenWidth - 40,
+      borderWidth: 2,
+      borderColor: '#CEE3EC',
+      flexDirection: 'column',
+      justifyContent: 'center',
     }
   
   });
