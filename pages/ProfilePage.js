@@ -12,8 +12,37 @@ class ProfileScreen extends React.Component {
     state = {
       isVisible: false,
       edit: 'Name',
+      nameText: '',
+      ageText: '',
+      heightText: '',
+      weightText: '',
+      tempText: '',
       avatarSource: {uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'}
       //add getAvatar function to retreive photo from DB if one exists
+    }
+
+    getText(input){
+      if(input === "Name"){
+        return "   " + this.state.nameText;
+      }else if(input === "Age"){
+        return "   " + this.state.ageText;
+      }else if(input === "Height"){
+        return "   " + this.state.heightText;
+      }else if (input === "Weight"){
+        return "   " + this.state.weightText;
+      }
+    }
+
+    setText(input){
+      if(input === "Name"){
+       this.setState({nameText:this.state.tempText});
+      }else if(input === "Age"){
+        this.setState({ageText:this.state.tempText});
+      }else if(input === "Height"){
+        this.setState({heightText:this.state.tempText});
+      }else if (input === "Weight"){
+        this.setState({weightText:this.state.tempText});
+      }
     }
 
     static navigationOptions = {
@@ -89,7 +118,7 @@ class ProfileScreen extends React.Component {
                 keyboardType={this.getKeyboardType(this.state.edit)}
                 leftIconContainerStyle={styles.overlayIcon}
                 onChangeText={(text) => {
-                  //TODO manage what to do with the text; set locally and input to database
+                  this.setState({tempText:text});
                 }}
                 leftIcon={
                   <Icon
@@ -104,7 +133,13 @@ class ProfileScreen extends React.Component {
               title='Save'
               style={styles.overlayButton}
               onPress={() => {
-                this.setState({isVisible: false});
+                if(this.state.tempText != ""){
+                  this.setState({isVisible: false});
+                  this.setText(this.state.edit);
+                  this.setState({tempText:""});
+                }else{
+                  this.setState({isVisible: false});
+                }
               }}/>
             </Overlay>
 
@@ -114,7 +149,7 @@ class ProfileScreen extends React.Component {
                 <ListItem
                   Component= {TouchableOpacity}
                   key={i}
-                  title={item.title}
+                  title={item.title + this.getText(item.title)}
                   leftIcon={ {
                     name: item.icon,
                     size: 32

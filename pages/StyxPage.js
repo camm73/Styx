@@ -81,8 +81,8 @@ class HomeScreen extends Component {
 
             <View style={styles.statsDetailContainer}>
                 <View>
-                  <Text style={styles.statsText}>Hours left in</Text>
-                  <Text style={styles.statsText}>this period</Text>
+                  <Text style={styles.statsText}>Hours left</Text>
+                  <Text style={styles.statsText}>in period</Text>
                 </View>
 
                 <View>
@@ -90,7 +90,7 @@ class HomeScreen extends Component {
                 </View>
 
                 <View>
-                  <Text style={styles.statsText}>Treatment Days</Text>
+                  <Text style={styles.statsText}>Days</Text>
                   <Text style={styles.statsText}>Remaining</Text>
                 </View>
             </View>
@@ -412,7 +412,7 @@ class HomeScreen extends Component {
 
     statsNumberContainer: {
       flexDirection: 'row',
-      justifyContent: 'space-evenly',
+      justifyContent: 'center'
     },
 
     statsDetailContainer: {

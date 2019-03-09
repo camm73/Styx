@@ -16,7 +16,7 @@ class Spacer extends Component {
 styles = StyleSheet.create({
     main: {
         height: 18,
-        width: 0
+        width: 80
     }
 });
 
