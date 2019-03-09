@@ -23,13 +23,13 @@ class ProfileScreen extends React.Component {
 
     getText(input){
       if(input === "Name"){
-        return "   " + this.state.nameText;
+        return ":  " + this.state.nameText;
       }else if(input === "Age"){
-        return "   " + this.state.ageText;
+        return ":  " + this.state.ageText;
       }else if(input === "Height"){
-        return "   " + this.state.heightText;
+        return ":  " + this.state.heightText;
       }else if (input === "Weight"){
-        return "   " + this.state.weightText;
+        return ":  " + this.state.weightText;
       }
     }
 
@@ -117,6 +117,7 @@ class ProfileScreen extends React.Component {
                 placeholder={this.getPlaceholderText(this.state.edit)}
                 keyboardType={this.getKeyboardType(this.state.edit)}
                 leftIconContainerStyle={styles.overlayIcon}
+                maxLength = {26}
                 onChangeText={(text) => {
                   this.setState({tempText:text});
                 }}

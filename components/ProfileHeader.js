@@ -1,6 +1,7 @@
 import React from 'react';
 import {withNavigation} from 'react-navigation';
 import {View, StyleSheet, Button, Text} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 class ProfileHeader extends React.Component {
 
@@ -8,9 +9,9 @@ class ProfileHeader extends React.Component {
         return(
             <View style={styles.header}>
                 <View style={styles.spacer}>
-                    <Button title='Go Back' onPress={() => {
+                    <Icon name="arrow-back" size={32} onPress={() => {
                         this.props.navigation.goBack();
-                    }}/>
+                    }} />
                 </View>
                 <Text style={styles.headerText}>Profile</Text>
                 <View style={styles.spacer}/>
@@ -40,8 +41,9 @@ const styles = StyleSheet.create({
     spacer: {
         flex: 1,
         height: 36,
-        alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        paddingLeft: 20
     }
 
 });
