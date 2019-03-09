@@ -76,7 +76,7 @@ class ProfileScreen extends React.Component {
 
             <Overlay
               isVisible={this.state.isVisible}
-              windowBackgroundColor="rgba(255, 255, 255, .5)"
+              windowBackgroundColor="rgba(0, 0, 0, .5)"
               overlayBackgroundColor="lightgray"
               width= {screenWidth - 20}
               height= {screenHeight/4}
