@@ -63,6 +63,12 @@
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Italic.ttf</string>
 		<string>Roboto-Regular.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-Italic.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>Raleway-Medium.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-Thin.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

@@ -59,9 +59,9 @@ class BLEComponent extends Component{
             return
           }
     
-          if (device.name === 'raspberrypi') {
+          if (device.name === 'Styx Pax') {
             this.device = device;
-            this.info("Connecting to Raspberry Pi")
+            this.info("Connecting to PAX")
             this.manager.stopDeviceScan()
             device.connect()
               .then((device) => {

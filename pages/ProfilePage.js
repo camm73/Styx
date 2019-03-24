@@ -12,12 +12,12 @@ class ProfileScreen extends React.Component {
     state = {
       isVisible: false,
       edit: 'Name',
-      nameText: '',
-      ageText: '',
-      heightText: '',
-      weightText: '',
+      nameText: 'Cameron Miller',
+      ageText: '19',
+      heightText: '6\' 0\"',
+      weightText: '140',
       tempText: '',
-      avatarSource: {uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'}
+      avatarSource: {uri: 'http://styxhealth.com/assets/images/cameron-1-510x340.jpg'}
       //add getAvatar function to retreive photo from DB if one exists
     }
 

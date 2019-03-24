@@ -58,7 +58,7 @@ const MainStack = createStackNavigator(
       },
     
       {
-        initialRouteName: 'HomeScreen',
+        initialRouteName: 'DataScreen',
         tabBarComponent: TabBarBottom,
         tabBarPosition: 'bottom',
         tabBarOptions: {

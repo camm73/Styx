@@ -3,21 +3,20 @@ import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
 class Spacer extends Component {
+    static propTypes = {
+        height: PropTypes.number,
+        width: PropTypes.number,
+    }
 
-    render(){
+    render = () => {
+        const {height, width} = this.props;
+
         return(
-            <View style={styles.main}>
+            <View height={height}
+            width={width}>
             </View>
         )
     }
 }
-
-
-styles = StyleSheet.create({
-    main: {
-        height: 18,
-        width: 80
-    }
-});
 
 export default Spacer;

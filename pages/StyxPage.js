@@ -70,12 +70,14 @@ class HomeScreen extends Component {
               )}
           </AnimatedCircularProgress>
 
+          
+
           <View style={styles.statsBubble}>
             <View style={styles.statsNumberContainer}>
                 <Text style={styles.statsNumber}>5</Text>
-                <Spacer/>
+                <Spacer width={80}/>
                 <Text style={styles.statsNumber}>2</Text>
-                <Spacer/>
+                <Spacer width = {80}/>
                 <Text style={styles.statsNumber}>34</Text>
             </View>
 
@@ -97,9 +99,7 @@ class HomeScreen extends Component {
           </View>
 
           {/*Spacer for two bubbles */}
-          <View style={{
-            height: 30
-          }}></View>
+          <Spacer height={30}/>
 
           <View style={styles.textBubble}>
                 <View style = {styles.textBubbleTop}>
@@ -174,22 +174,22 @@ class HomeScreen extends Component {
                     symptomResponse("Cravings");
                     this.setState({cravingDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Mental Fog' disabled={this.state.mentalFogDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Mental Fog");
                     this.setState({mentalFogDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Cough' disabled={this.state.coughDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse('Cough');
                     this.setState({coughDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Anxiety' disabled={this.state.anxietyDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Anxiety");
                     this.setState({anxietyDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Depression' disabled={this.state.depressionDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Depression");
                     this.setState({depressionDisabled: true});
@@ -201,22 +201,22 @@ class HomeScreen extends Component {
                     symptomResponse("Headache");
                     this.setState({headacheDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Fatigue' disabled={this.state.fatigueDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Fatigue");
                     this.setState({fatigueDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Nausea' disabled={this.state.nauseaDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Nausea");
                     this.setState({nauseaDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Constipation' disabled={this.state.constipationDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Constipation");
                     this.setState({constipationDisabled: true});
                   }}/>
-                  <Spacer />
+                  <Spacer height={15}/>
                   <Button title='Irritability' disabled={this.state.irritabilityDisabled} buttonStyle={styles.overlayButton} onPress={() => {
                     symptomResponse("Irritability");
                     this.setState({irritabilityDisabled: true});
@@ -224,7 +224,7 @@ class HomeScreen extends Component {
                 </View>
             </View>
 
-            <Spacer/>
+            <Spacer height={15}/>
 
             <View style={styles.contButtonContainer}>
               <Button title="Continue" buttonStyle={styles.overlayContButton} type='clear' onPress={() => {
@@ -277,19 +277,19 @@ class HomeScreen extends Component {
                   this.props.navigation.navigate('CommunityScreen');
                   //TODO: submit this response to the database
                 }} />
-                <Spacer />
+                <Spacer height={15}/>
                 <Button title='Contact Mentor' buttonStyle={styles.mentButton} onPress={() => {
                   this.setState({withOptionsOverlayVisible: false});
                   
                   //TODO: do something about contacting mentor (open phone call or text?)
                 }} />
-                <Spacer />
+                <Spacer height={15}/>
                 <Button title='View Personal Motivations' buttonStyle={styles.motButton} onPress={() => {
                   this.setState({withOptionsOverlayVisible: false});
 
                   //TODO: Redirect to showing the person their personal motivations
                 }} />
-                <Spacer />
+                <Spacer height={15}/>
                 <Button title='Emergency Dosage' buttonStyle={styles.emerButton} onPress={() => {
                   this.setState({withOptionsOverlayVisible: false});
 

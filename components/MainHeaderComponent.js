@@ -15,9 +15,10 @@ class MainHeaderComponent extends React.Component{
 
                 <Image source={require('../res/styxLogo.png')} style = {styles.logo}/>
 
-                <TouchableOpacity onPress = {() => this.props.navigation.navigate('SettingsScreen')}>
-                    <Image source={require('../res/settingsIcon.png')} style = {styles.topButton}/>
+                <TouchableOpacity disabled={true} onPress = {() => this.props.navigation.navigate('SettingsScreen')}>
+                    <Image source={require('../res/settingsIcon.png')} style = {styles.topButtonInvisible}/>
                 </TouchableOpacity>
+    
         </View> 
     )
   }
@@ -46,6 +47,13 @@ const styles = StyleSheet.create({
       width: 32,
       height: 32,
       resizeMode: 'contain'
+    },
+
+    topButtonInvisible: {
+      width: 32,
+      height: 32,
+      resizeMode: 'contain',
+      opacity: 0
     }
   
   });
