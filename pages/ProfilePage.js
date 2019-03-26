@@ -4,6 +4,7 @@ import ProfileHeader from '../components/ProfileHeader';
 import PhotoUpload from 'react-native-photo-upload';
 import {ListItem, Overlay, Button, Input} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {selectContact} from 'react-native-select-contact';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -16,6 +17,8 @@ class ProfileScreen extends React.Component {
       ageText: '19',
       heightText: '6\' 0\"',
       weightText: '140',
+      mentor: null,
+      mentorName: '',
       tempText: '',
       avatarSource: {uri: 'http://styxhealth.com/assets/images/cameron-1-510x340.jpg'}
       //add getAvatar function to retreive photo from DB if one exists
@@ -30,6 +33,8 @@ class ProfileScreen extends React.Component {
         return ":  " + this.state.heightText;
       }else if (input === "Weight"){
         return ":  " + this.state.weightText;
+      }else if (input === "Mentor"){
+        return ":  " + this.state.mentorName
       }
     }
 
@@ -159,12 +164,33 @@ class ProfileScreen extends React.Component {
                   onPress = {() => {
                     this.setState({isVisible: true});
                     this.setState({edit: item.title});
-                    console.log(item.title);
+                    console.log("Editting: " + item.title);
                   }}
                 />
               </View>
             ))
           }
+          <View style={styles.listContainer}>
+            <ListItem 
+              Component = {TouchableOpacity}
+              key = {list.length}
+              title={"Mentor" + this.getText("Mentor")}
+              leftIcon = {
+                <Icon name = 'support' size={28}/>
+              }
+              containerStyle = {styles.contentContainer}
+              onPress = {() => {
+                return selectContact().then(selection => {
+                  if(!selection){
+                    return null;
+                  }
+                  
+                  this.setState({mentor: selection})
+                  this.setState({mentorName: selection.name});
+                });
+              }}
+            />
+          </View>
         </View>
       </View>
         );
@@ -197,7 +223,7 @@ const list = [
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#4c88cd",
     height:200,
   },
   avatar: {
@@ -242,11 +268,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop:10,
-    height:45,
+    height: 45,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:20,
+    marginBottom: 20,
     width:250,
     borderRadius:30,
     backgroundColor: "#00BFFF",
@@ -278,7 +304,9 @@ const styles = StyleSheet.create({
   },
 
   listContainer: {
-    padding: 12
+    padding: 12,
+    borderColor: 'red',
+    borderWidth: 3
   }
 });
 

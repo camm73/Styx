@@ -758,6 +758,11 @@
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.5.4.tgz#b863a4191e525206819e008097ebf0fb2e3a1cdc"
   integrity sha512-sW6xN96wUak4tgc89d0tbTg7QDGYhGv5hvQIS6h4mRCd8h2btiZ80loPU8cyLwsBbA4ZeQt0FjvUhJ4rNhdsGg==
 
+"@yfuks/react-native-action-sheet@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@yfuks/react-native-action-sheet/-/react-native-action-sheet-0.0.4.tgz#8388b83696d750885b286f75376b2e61fe072b79"
+  integrity sha512-3P2924PEZlrmh6agDVpIIW8rhhkJySfOKjl6XsrEAVgDkyG99vuJRFQVmFPnE6Tk67PBfR2cXV3FcFEk6vcZ0g==
+
 abab@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
@@ -5804,6 +5809,13 @@ react-native-scripts@^2.0.1:
     chalk "^2.0.1"
     cross-spawn "^5.0.1"
     minimist "^1.2.0"
+
+react-native-select-contact@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-select-contact/-/react-native-select-contact-1.2.0.tgz#0a3d679faa16a4c772a42d062bdf35393594b213"
+  integrity sha512-yFwqC1iGxC28AiNGe0IiRfNxL7+g22EtpLHXaYUp+B9aLj1waywPf6bjO9olSHjdQwV4eQTWzCKVqlqT3AdT6w==
+  optionalDependencies:
+    "@yfuks/react-native-action-sheet" "^0.0.4"
 
 react-native-splash-screen@^3.2.0:
   version "3.2.0"

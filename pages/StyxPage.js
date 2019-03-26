@@ -45,7 +45,7 @@ class HomeScreen extends Component {
     render() {
       const fill = this.state.points / MAX_POINTS * 100;
       return (
-        <ScrollView contentContainerStyle={styles.home} ref={(ref) => this.scroll = ref}>
+        <ScrollView contentContainerStyle={styles.home} ref={(ref) => this.scroll = ref} scrollEnabled={false}>
            <AnimatedCircularProgress
               size={250}
               width={12}

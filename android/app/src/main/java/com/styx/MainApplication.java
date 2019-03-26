@@ -3,6 +3,7 @@ package com.styx;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.streem.selectcontact.SelectContactPackage;
 import io.realm.react.RealmReactPackage;
 import com.rnfs.RNFSPackage;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
@@ -34,6 +35,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SelectContactPackage(),
             new RealmReactPackage(),
             new RNFSPackage(),
             new ImageResizerPackage(),
