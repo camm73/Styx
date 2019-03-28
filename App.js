@@ -13,6 +13,7 @@ export default class App extends React.Component {
     appState: AppState.currentState,
   };
 
+
   componentWillMount() {
     AppState.addEventListener('change', this._handleAppStateChange);
   }
@@ -39,18 +40,18 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <SafeAreaView style={styles.header} />
-      <AppContainer  onNavigationStateChange={(prevState, currentState) => {
-        const currentScreen = getActiveRouteName(currentState);
-        const prevScreen = getActiveRouteName(prevState);
-        
-        //Trigger re-animation of circular progress bar when going back to home screen.
-        if ((prevScreen !== currentScreen) && (currentScreen == 'HomeScreen')) {
-          updateAnimState();
-          }
-        }}/>
-      </React.Fragment>
+          <React.Fragment>
+            <SafeAreaView style={styles.header} />
+          <AppContainer  onNavigationStateChange={(prevState, currentState) => {
+            const currentScreen = getActiveRouteName(currentState);
+            const prevScreen = getActiveRouteName(prevState);
+            
+            //Trigger re-animation of circular progress bar when going back to home screen.
+            if ((prevScreen !== currentScreen) && (currentScreen == 'HomeScreen')) {
+              updateAnimState();
+              }
+            }}/>
+          </React.Fragment>
     );
   }
 }
@@ -66,6 +67,7 @@ function getActiveRouteName(navigationState) {
   }
   return route.routeName;
 }
+
 
 const styles = StyleSheet.create({
 

@@ -43,7 +43,7 @@ class HomeScreen extends Component {
   };
 
     render() {
-      const fill = this.state.points / MAX_POINTS * 100;
+      const fill = this.state.points / MAX_POINTS * 100; 
       return (
         <ScrollView contentContainerStyle={styles.home} ref={(ref) => this.scroll = ref} scrollEnabled={false}>
            <AnimatedCircularProgress
@@ -64,7 +64,7 @@ class HomeScreen extends Component {
                   <Text style={styles.percent}>
                   { Math.round(MAX_POINTS * fill / 100) + '%'}
                 </Text>
-
+                {/* TODO: change this to be "Budget Used" on two separate lines*/}
                 <Text style={styles.percentText}>Budget</Text>
                 </Fragment>
               )}

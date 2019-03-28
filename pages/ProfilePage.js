@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, PixelRatio, Dimensions, Alert} from 'react-native';
+import {AsyncStorage, StyleSheet, Text, View, Image, TouchableOpacity, PixelRatio, Dimensions, Alert} from 'react-native';
 import ProfileHeader from '../components/ProfileHeader';
 import PhotoUpload from 'react-native-photo-upload';
 import {ListItem, Overlay, Button, Input} from 'react-native-elements';
@@ -10,20 +10,25 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 class ProfileScreen extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.restoreData();
+  }
+
     state = {
       isVisible: false,
       edit: 'Name',
-      nameText: 'Cameron Miller',
-      ageText: '19',
-      heightText: '6\' 0\"',
-      weightText: '140',
-      mentor: null,
+      nameText: '',
+      ageText: '',
+      heightText: '',
+      weightText: '',
+      mentor: '',
       mentorName: '',
       tempText: '',
       avatarSource: {uri: 'http://styxhealth.com/assets/images/cameron-1-510x340.jpg'}
-      //add getAvatar function to retreive photo from DB if one exists
     }
-
+  
     getText(input){
       if(input === "Name"){
         return ":  " + this.state.nameText;
@@ -34,13 +39,13 @@ class ProfileScreen extends React.Component {
       }else if (input === "Weight"){
         return ":  " + this.state.weightText;
       }else if (input === "Mentor"){
-        return ":  " + this.state.mentorName
+        return ":  " + this.state.mentorName;
       }
     }
 
     setText(input){
       if(input === "Name"){
-       this.setState({nameText:this.state.tempText});
+       this.setState({nameText: this.state.tempText});
       }else if(input === "Age"){
         this.setState({ageText:this.state.tempText});
       }else if(input === "Height"){
@@ -48,6 +53,37 @@ class ProfileScreen extends React.Component {
       }else if (input === "Weight"){
         this.setState({weightText:this.state.tempText});
       }
+    }
+
+    saveData(input){
+      if(input === "Name"){
+        console.log('Name Text: ' + this.state.tempText);
+        AsyncStorage.setItem('Name', this.state.tempText);
+      }else if(input === "Age"){
+        AsyncStorage.setItem('Age', this.state.tempText);
+      }else if(input === "Height"){
+        AsyncStorage.setItem('Height', this.state.tempText);
+      }else if(input === "Weight"){
+        AsyncStorage.setItem('Weight', this.state.tempText);
+      }
+    }
+
+    restoreData(){
+      AsyncStorage.getItem('Name').then(value => {
+        this.setState({nameText: value});
+      });
+      
+      AsyncStorage.getItem('Age').then(value => {
+        this.setState({ageText: value});
+      });
+
+      AsyncStorage.getItem('Height').then(value => {
+        this.setState({heightText: value});
+      });
+
+      AsyncStorage.getItem('Weight').then(value => {
+        this.setState({weightText: value});
+      });
     }
 
     static navigationOptions = {
@@ -81,6 +117,7 @@ class ProfileScreen extends React.Component {
         return 'numeric';
       }
     }
+
 
     render() {
         return(
@@ -142,6 +179,7 @@ class ProfileScreen extends React.Component {
                 if(this.state.tempText != ""){
                   this.setState({isVisible: false});
                   this.setText(this.state.edit);
+                  this.saveData(this.state.edit);
                   this.setState({tempText:""});
                 }else{
                   this.setState({isVisible: false});
@@ -196,6 +234,7 @@ class ProfileScreen extends React.Component {
         );
     }
 }
+
 
 const list = [
   {
@@ -305,8 +344,6 @@ const styles = StyleSheet.create({
 
   listContainer: {
     padding: 12,
-    borderColor: 'red',
-    borderWidth: 3
   }
 });
 
