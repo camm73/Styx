@@ -84,6 +84,18 @@ class ProfileScreen extends React.Component {
       AsyncStorage.getItem('Weight').then(value => {
         this.setState({weightText: value});
       });
+
+      AsyncStorage.getItem('Mentor').then(value => {
+        let mentArray = JSON.parse(value);
+        this.setState({mentor: mentArray});
+        this.setState({mentorName: mentArray.name});
+      })
+    }
+
+    saveMentor(data){
+      AsyncStorage.setItem('Mentor', JSON.stringify(data)).then(() => {
+        console.log('Saving mentor.')
+      });
     }
 
     static navigationOptions = {
@@ -222,7 +234,7 @@ class ProfileScreen extends React.Component {
                   if(!selection){
                     return null;
                   }
-                  
+                  this.saveMentor(selection);
                   this.setState({mentor: selection})
                   this.setState({mentorName: selection.name});
                 });
